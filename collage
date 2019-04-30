@@ -1,0 +1,8 @@
+#!/bin/bash
+FOLDER=re-blur
+convert $1 -resize 1920x1200!^ full_$1
+convert full_$1 -blur 0x8 blur_$1
+composite -gravity center $1  blur_$1  combo_$1
+mv combo_$1 $FOLDER/combo_$1
+xdg-open  $FOLDER/combo_$1
+rm full_$1 blur_$1
